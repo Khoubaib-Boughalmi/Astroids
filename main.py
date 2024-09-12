@@ -39,6 +39,13 @@ def main():
                 print("Game Over!")
                 pygame.quit()
                 return
+        # detect if there is a collision between bullet and astroid
+        for asteroid in asteroids:
+            for bullet in shots:
+                if asteroid.detect_collision(bullet):
+                    asteroid.split()
+                    pygame.sprite.Sprite.kill(bullet)
+                    continue
         # update units in gui in no collision is detected
         for unit in drawable:
             unit.draw(screen)
