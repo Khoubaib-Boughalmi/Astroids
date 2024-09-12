@@ -25,8 +25,17 @@ def main():
                 return
         dt = fps.tick(60) / 1000 # amount of time that has passed since last call in ms
         screen.fill(color=(0, 0, 0))
+        
+        # calculate units new position 
         for unit in updatable:
             unit.update(dt)
+        # detect if giving the new positions there is a collision
+        for asteroid in asteroids:
+            if asteroid.detect_collision(player):
+                print("Game Over!")
+                pygame.quit()
+                return
+        # update units in gui in no collision is detected
         for unit in drawable:
             unit.draw(screen)
         pygame.display.flip()
