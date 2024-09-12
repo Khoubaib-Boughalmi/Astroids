@@ -13,7 +13,7 @@ class Asteroid(CircleShape):
         pygame.draw.circle(screen, (255, 255, 255), center=(self.position[0], self.position[1]), radius=self.radius, width=2)
 
     def update(self, dt):
-        self.position += self.velocity * dt
+        self.position += self.velocity * dt * ASTEROID_SPEED
 
     def split(self):
         self.kill()
