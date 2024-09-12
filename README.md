@@ -1,1 +1,1 @@
-# astroids
+# astroids game
